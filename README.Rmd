@@ -1,0 +1,37 @@
+---
+output: html_document
+---
+
+# Objective
+
+Machine learning algorithms are able to train prediction models that aim to predict an outcome (unknown) based on certain observations (known) values or features. The training phase could be supervised, where the outcome is known for certain observations and based on that data, the model is built. However, if the number of features used for the prediction is insufficient, the error in the prediction increase. Analogously, using all available features for prediction may lead in undesirable effects.
+
+This app provides a user friendly interface in order to perform automatic feature selection from a set of observations (known features) using [Recursive Feature Elimination (RFE)](http://topepo.github.io/caret/rfe.html) algorithm for Random Forest and Linear Regression models using caret package and [mtcars](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) data set.
+
+Once the application is executed, user will be able to know the features selected to predict the selected outcome.
+
+# Inputs
+
+This app executes k-fold cross-validation using RFE function according to the following user settings:
+
+- User could select the outcome as one of the variables given in mtcars data set in _**Outcome**_ side panel section. The other variables will become potential features to use in order to predict outcome values.
+
+- User must specify whether Random Forest or Linear Regression will be used in [rfeControl](http://topepo.github.io/caret/rfe.html) command for the training and evaluation process by selecting one of these options of _**Select function**_ combo box.
+
+- User must provide k value for k-fold cross-validation process through _**k-fold**_ slider. This setting will be used in [rfeControl](http://topepo.github.io/caret/rfe.html) command from caret package.
+
+# Execution
+
+Once initial settings are specified, user must push _**Run!**_ button. RFE algorithm will be executed with provided settings. 
+
+Notice that _**Run!**_ button must be pushed the first time. After that, user could change one of the settings and the output will be computed again automatically providing the user the ability to see on a fast pace the effect of modifying one of the inputs.
+
+# Output
+
+The output is provided in two tabs:
+
+- _**RFE**_ tab provides a plot for Accuracy (if the outcome is a factor or binary) or RMSE value (if outcome is numerical) versus the number of variables selected. Notice that the variables are being selected in order of importance.
+
+- _**Features**_ where the name of the features that are finally selected by the method is provided.
+
+Enjoy!
